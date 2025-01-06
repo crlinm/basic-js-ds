@@ -20,10 +20,10 @@ class BinarySearchTree {
       if (!node) {
         return new Node(data);
       }
-      if (node.value < data) {
+      if (node.data < data) {
         node.right = addNode(node.right);
       }
-      if (node.value > data) {
+      if (node.data > data) {
         node.left = addNode(node.left);
       }
       return node;
@@ -41,13 +41,13 @@ class BinarySearchTree {
       if (!node) {
         return null;
       }
-      if (node.value == data) {
+      if (node.data == data) {
         return node;
       }
-      if (data < node.value) {
+      if (data < node.data) {
         return findNode(node.left);
       }
-      if (data > node.value) {
+      if (data > node.data) {
         return findNode(node.right);
       }
       return null;
@@ -60,13 +60,13 @@ class BinarySearchTree {
       if (!node) {
         return null;
       }
-      if (node.value < data) {
+      if (node.data < data) {
         node.right = removeNode(node.right);
       }
-      if (node.value > data) {
+      if (node.data > data) {
         node.left = removeNode(node.left);
       }
-      if (node.value == data) {
+      if (node.data == data) {
         return null;
       }
       return node;
@@ -75,11 +75,23 @@ class BinarySearchTree {
   }
 
   min() {
-
+    let res = null;
+    let node = this.rootNode;
+    while (node != null) {
+      res = node.data;
+      node = node.left;
+    }
+    return res;
   }
 
   max() {
-
+    let res = null;
+    let node = this.rootNode;
+    while (node != null) {
+      res = node.data;
+      node = node.right;
+    }
+    return res;
   }
 }
 
